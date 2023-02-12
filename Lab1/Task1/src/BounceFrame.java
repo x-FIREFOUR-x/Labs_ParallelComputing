@@ -17,68 +17,64 @@ public class BounceFrame extends JFrame {
         Container content = this.getContentPane();
         content.add(this.canvas, BorderLayout.CENTER);
 
+        InitializeButton(content);
+    }
+
+    private void InitializeButton(Container content) {
         JPanel buttonPanel = new JPanel();
         buttonPanel.setBackground(Color.lightGray);
-        JButton buttonOneBalls = new JButton("1 Ball");
-        JButton buttonHundredBalls = new JButton("100 Ball");
-        JButton buttonThousandBalls = new JButton("1000 Ball");
-        JButton buttonStop = new JButton("Stop");
 
+        JButton buttonOneBalls = new JButton("1 Ball");
         buttonOneBalls.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Ball b = new Ball(canvas);
-                canvas.add(b);
-
-                BallThread thread = new BallThread(b);
-                thread.start();
-                System.out.println("Created thread name = " +
-                        thread.getName());
+                createBall();
             }
         });
+        buttonPanel.add(buttonOneBalls);
 
+        JButton buttonHundredBalls = new JButton("100 Ball");
         buttonHundredBalls.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 for (int i = 0; i < 100; i++) {
-                    Ball b = new Ball(canvas);
-                    canvas.add(b);
-
-                    BallThread thread = new BallThread(b);
-                    thread.start();
-                    System.out.println("Created thread name = " +
-                            thread.getName());
+                    createBall();
                 }
             }
         });
+        buttonPanel.add(buttonHundredBalls);
 
+        JButton buttonThousandBalls = new JButton("1000 Ball");
         buttonThousandBalls.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 for (int i = 0; i < 1000; i++) {
-                    Ball b = new Ball(canvas);
-                    canvas.add(b);
-
-                    BallThread thread = new BallThread(b);
-                    thread.start();
-                    System.out.println("Created thread name = " +
-                            thread.getName());
+                    createBall();
                 }
             }
         });
+        buttonPanel.add(buttonThousandBalls);
 
-        buttonStop.addActionListener(new ActionListener() {
+        JButton buttonClear = new JButton("Clear");
+        buttonClear.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.exit(0);
             }
         });
-
-        buttonPanel.add(buttonOneBalls);
-        buttonPanel.add(buttonHundredBalls);
-        buttonPanel.add(buttonThousandBalls);
-        buttonPanel.add(buttonStop);
+        buttonPanel.add(buttonClear);
 
         content.add(buttonPanel, BorderLayout.SOUTH);
+    }
+
+    private void createBall()
+    {
+        Ball b = new Ball(canvas);
+        canvas.add(b);
+
+        BallThread thread = new BallThread(b);
+        thread.start();
+        System.out.println("Created thread name = " +
+                thread.getName());
     }
 }

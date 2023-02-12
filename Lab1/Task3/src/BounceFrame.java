@@ -9,7 +9,7 @@ public class BounceFrame extends JFrame {
     public static final int HEIGHT = 350;
     public BounceFrame() {
         this.setSize(WIDTH, HEIGHT);
-        this.setTitle("Bounce programm 1");
+        this.setTitle("Bounce programm 3");
         this.canvas = new BallCanvas();
         System.out.println("In Frame Thread name = "
                 + Thread.currentThread().getName());
@@ -25,11 +25,8 @@ public class BounceFrame extends JFrame {
     {
         JPanel buttonPanel = new JPanel();
         buttonPanel.setBackground(Color.lightGray);
-        JButton buttonOneBalls = new JButton("1 Ball");
-        JButton buttonHundredBalls = new JButton("100 Ball");
-        JButton buttonThousandBalls = new JButton("3000 Ball");
-        JButton buttonStop = new JButton("Stop");
 
+        JButton buttonOneBalls = new JButton("1 Ball");
         buttonOneBalls.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -37,7 +34,9 @@ public class BounceFrame extends JFrame {
                 createBall(BallType.IMPORTANT);
             }
         });
+        buttonPanel.add(buttonOneBalls);
 
+        JButton buttonHundredBalls = new JButton("100 Ball");
         buttonHundredBalls.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -47,7 +46,9 @@ public class BounceFrame extends JFrame {
                 createBall(BallType.IMPORTANT);
             }
         });
+        buttonPanel.add(buttonHundredBalls);
 
+        JButton buttonThousandBalls = new JButton("3000 Ball");
         buttonThousandBalls.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -57,17 +58,15 @@ public class BounceFrame extends JFrame {
                 createBall(BallType.IMPORTANT);
             }
         });
+        buttonPanel.add(buttonThousandBalls);
 
+        JButton buttonStop = new JButton("Stop");
         buttonStop.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.exit(0);
             }
         });
-
-        buttonPanel.add(buttonOneBalls);
-        buttonPanel.add(buttonHundredBalls);
-        buttonPanel.add(buttonThousandBalls);
         buttonPanel.add(buttonStop);
 
         content.add(buttonPanel, BorderLayout.SOUTH);
