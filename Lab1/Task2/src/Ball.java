@@ -3,7 +3,7 @@ import java.awt.geom.Ellipse2D;
 import java.util.Random;
 
 public class Ball {
-    private Component canvas;
+    private ObjectCanvas canvas;
     private static final int XSIZE = 20;
     private static final int YSIZE = 20;
     private int x = 0;
@@ -13,8 +13,7 @@ public class Ball {
 
 
     public Ball(Component c){
-        this.canvas = c;
-
+        this.canvas =(ObjectCanvas) c;
 
         if(Math.random()<0.5){
             x = new Random().nextInt(this.canvas.getWidth());
@@ -25,13 +24,14 @@ public class Ball {
         }
     }
 
-    public static void f(){
-        int a = 0;
-    }
-
     public void draw (Graphics2D g2){
         g2.setColor(Color.darkGray);
         g2.fill(new Ellipse2D.Double(x,y,XSIZE,YSIZE));
+    }
+
+    public void clear(){
+        this.canvas.removeBall(this);
+        this.canvas.repaint();
     }
 
     public void move(){
@@ -54,5 +54,15 @@ public class Ball {
             dy = -dy;
         }
         this.canvas.repaint();
+    }
+
+    public boolean isHitTheHoles()
+    {
+        for (Hole hole: this.canvas.getHoles()) {
+            if (hole.intersection(this.x, this.y)){
+                return true;
+            }
+        }
+        return false;
     }
 }

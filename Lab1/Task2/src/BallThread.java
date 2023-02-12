@@ -10,17 +10,20 @@ public class BallThread extends Thread {
     @Override
     public void run(){
         try{
-            Instant start = Instant.now();
-
-            for(int i=1; i<2000; i++){
+            while(true){
+                if(b.isHitTheHoles()){
+                    break;
+                }
                 b.move();
                 Thread.sleep(5);
             }
-            Instant finish = Instant.now();
-            long timeElapsed = Duration.between(start, finish).toMillis();
-            System.out.println("Thread time working: " + timeElapsed / 1000 + "," + timeElapsed % 1000);
+            b.clear();
+            CounterHitsHoles.Instance().upCounter();
 
         } catch(InterruptedException ex){
+
+        } finally {
+            b.clear();
         }
     }
 }
