@@ -1,5 +1,5 @@
-import java.time.Duration;
 import java.time.Instant;
+import java.time.Duration;
 
 public class BallThread extends Thread {
     private Ball b;
