@@ -19,9 +19,16 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "jdk.selected.JAVA_MODULE": "corretto-17",
+    "last_opened_file_path": "D:/Project/6Semestr/ParallelComputing/Lab1/Task3/src",
     "node.js.selected.package.tslint": "(autodetect)"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Project\6Semestr\ParallelComputing\Lab1\Task3\src" />
+    </key>
+  </component>
   <component name="TaskManager">
     <servers />
   </component>
