@@ -5,8 +5,8 @@ import java.awt.event.ActionListener;
 
 public class BounceFrame extends JFrame {
     private BallCanvas canvas;
-    public static final int WIDTH = 450;
-    public static final int HEIGHT = 350;
+    public static final int WIDTH = 700;
+    public static final int HEIGHT = 550;
     public BounceFrame() {
         this.setSize(WIDTH, HEIGHT);
         this.setTitle("Bounce programm 3");
@@ -26,7 +26,7 @@ public class BounceFrame extends JFrame {
         JPanel buttonPanel = new JPanel();
         buttonPanel.setBackground(Color.lightGray);
 
-        JButton buttonOneBalls = new JButton("1 Ball");
+        JButton buttonOneBalls = new JButton("1 Normal, 1 Priority");
         buttonOneBalls.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -36,7 +36,7 @@ public class BounceFrame extends JFrame {
         });
         buttonPanel.add(buttonOneBalls);
 
-        JButton buttonHundredBalls = new JButton("100 Ball");
+        JButton buttonHundredBalls = new JButton("100N, 1P Balls");
         buttonHundredBalls.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -48,7 +48,7 @@ public class BounceFrame extends JFrame {
         });
         buttonPanel.add(buttonHundredBalls);
 
-        JButton buttonThousandBalls = new JButton("3000 Ball");
+        JButton buttonThousandBalls = new JButton("3000N, 1P Balls");
         buttonThousandBalls.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -59,6 +59,18 @@ public class BounceFrame extends JFrame {
             }
         });
         buttonPanel.add(buttonThousandBalls);
+
+        JButton buttonOneNormalBalls = new JButton("3000P, 1N Balls");
+        buttonOneNormalBalls.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                for (int i = 0; i < 3000; i++) {
+                    createBall(BallType.IMPORTANT);
+                }
+                createBall(BallType.NORMAL);
+            }
+        });
+        buttonPanel.add(buttonOneNormalBalls);
 
         JButton buttonStop = new JButton("Stop");
         buttonStop.addActionListener(new ActionListener() {
