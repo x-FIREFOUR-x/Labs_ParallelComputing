@@ -74,6 +74,17 @@ public class BounceFrame extends JFrame {
         });
         buttonPanel.add(buttonThousandBalls);
 
+        JButton buttonTenThousandBalls = new JButton("10000 Ball");
+        buttonTenThousandBalls.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                for (int i = 0; i < 10000; i++) {
+                    createBall();
+                }
+            }
+        });
+        buttonPanel.add(buttonTenThousandBalls);
+
         JButton buttonStop = new JButton("Stop");
         buttonStop.addActionListener(new ActionListener() {
             @Override

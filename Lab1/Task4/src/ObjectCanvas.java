@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class ObjectCanvas extends JPanel {
 
     public JCheckBox checkBoxActive;
-    private ArrayList<Ball> balls = new ArrayList<>();
+    private volatile ArrayList<Ball> balls = new ArrayList<>();
     private ArrayList<Hole> holes = new ArrayList<>();
 
     public ArrayList<Hole> getHoles() {return holes;};
@@ -16,7 +16,7 @@ public class ObjectCanvas extends JPanel {
         this.balls.add(b);
     }
 
-    public void removeBall(Ball b) {
+    public synchronized void removeBall(Ball b) {
         this.balls.remove(b);
     }
 

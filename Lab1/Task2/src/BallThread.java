@@ -17,7 +17,6 @@ public class BallThread extends Thread {
                 b.move();
                 Thread.sleep(5);
             }
-            b.clear();
             CounterHitsHoles.Instance().upCounter();
 
         } catch(InterruptedException ex){
