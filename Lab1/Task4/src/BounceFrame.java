@@ -5,8 +5,8 @@ import java.awt.event.ActionListener;
 
 public class BounceFrame extends JFrame {
     private ObjectCanvas canvas;
-    public static final int WIDTH = 450;
-    public static final int HEIGHT = 350;
+    public static final int WIDTH = 700;
+    public static final int HEIGHT = 550;
     public BounceFrame() {
         this.setSize(WIDTH, HEIGHT);
         this.setTitle("Bounce programm 4");

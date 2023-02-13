@@ -3,8 +3,8 @@ import java.awt.geom.Ellipse2D;
 
 public class Hole {
     private Component canvas;
-    private static final int XSIZE = 40;
-    private static final int YSIZE = 40;
+    private static final int XSIZE = 60;
+    private static final int YSIZE = 60;
     private int x = 0;
     private int y= 0;
 

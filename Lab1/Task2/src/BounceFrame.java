@@ -5,8 +5,8 @@ import java.awt.event.ActionListener;
 
 public class BounceFrame extends JFrame {
     private ObjectCanvas canvas;
-    public static final int WIDTH = 450;
-    public static final int HEIGHT = 350;
+    public static final int WIDTH = 700;
+    public static final int HEIGHT = 550;
     public BounceFrame() {
         this.setSize(WIDTH, HEIGHT);
         this.setTitle("Bounce programm 2");
@@ -43,7 +43,7 @@ public class BounceFrame extends JFrame {
         JPanel buttonPanel = new JPanel();
         buttonPanel.setBackground(Color.lightGray);
 
-        JButton buttonOneBalls = new JButton("1 Ball");
+        JButton buttonOneBalls = new JButton("1 Balls");
         buttonOneBalls.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -52,7 +52,7 @@ public class BounceFrame extends JFrame {
         });
         buttonPanel.add(buttonOneBalls);
 
-        JButton buttonHundredBalls = new JButton("100 Ball");
+        JButton buttonHundredBalls = new JButton("100 Balls");
         buttonHundredBalls.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -63,7 +63,7 @@ public class BounceFrame extends JFrame {
         });
         buttonPanel.add(buttonHundredBalls);
 
-        JButton buttonThousandBalls = new JButton("1000 Ball");
+        JButton buttonThousandBalls = new JButton("1000 Balls");
         buttonThousandBalls.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -74,7 +74,7 @@ public class BounceFrame extends JFrame {
         });
         buttonPanel.add(buttonThousandBalls);
 
-        JButton buttonTenThousandBalls = new JButton("10000 Ball");
+        JButton buttonTenThousandBalls = new JButton("10000 Balls");
         buttonTenThousandBalls.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
