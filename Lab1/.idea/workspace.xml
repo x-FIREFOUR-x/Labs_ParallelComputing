@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a59df04a-c98c-4531-86d3-a27ef71c9cea" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Task1/src/BallCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task1/src/BallCanvas.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Task1/src/BounceFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task1/src/BounceFrame.java" afterDir="false" />
@@ -56,6 +57,9 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Project\6Semestr\ParallelComputing\Lab1\Task4\src" />
       <recent name="D:\Project\6Semestr\ParallelComputing\Lab1\Task3\src" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
