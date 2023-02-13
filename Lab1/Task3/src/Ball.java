@@ -8,7 +8,7 @@ enum BallType{
 }
 
 public class Ball {
-    private Component canvas;
+    private BallCanvas canvas;
     private static final int XSIZE = 20;
     private static final int YSIZE = 20;
     private int x = 0;
@@ -19,7 +19,7 @@ public class Ball {
     private BallType type;
 
     public Ball(Component c, BallType t){
-        this.canvas = c;
+        this.canvas = (BallCanvas) c;
         type = t;
 
         /*
@@ -71,5 +71,10 @@ public class Ball {
     public BallType getType()
     {
         return type;
+    }
+
+    public void clear(){
+        this.canvas.removeBall(this);
+        this.canvas.repaint();
     }
 }

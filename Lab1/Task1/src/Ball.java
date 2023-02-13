@@ -3,7 +3,7 @@ import java.awt.geom.Ellipse2D;
 import java.util.Random;
 
 public class Ball {
-    private Component canvas;
+    private BallCanvas canvas;
     private static final int XSIZE = 20;
     private static final int YSIZE = 20;
     private int x = 0;
@@ -13,7 +13,7 @@ public class Ball {
 
 
     public Ball(Component c){
-        this.canvas = c;
+        this.canvas = (BallCanvas) c;
 
 
         if(Math.random()<0.5){
@@ -32,6 +32,11 @@ public class Ball {
     public void draw (Graphics2D g2){
         g2.setColor(Color.darkGray);
         g2.fill(new Ellipse2D.Double(x,y,XSIZE,YSIZE));
+    }
+
+    public void clear(){
+        this.canvas.removeBall(this);
+        this.canvas.repaint();
     }
 
     public void move(){

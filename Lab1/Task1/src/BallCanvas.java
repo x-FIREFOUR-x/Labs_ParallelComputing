@@ -3,10 +3,13 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class BallCanvas extends JPanel {
-    private ArrayList<Ball> balls = new ArrayList<>();
+    private volatile ArrayList<Ball> balls = new ArrayList<>();
 
     public void add(Ball b) {
         this.balls.add(b);
+    }
+    public synchronized void removeBall(Ball b) {
+        this.balls.remove(b);
     }
 
     @Override

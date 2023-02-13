@@ -21,6 +21,8 @@ public class BallThread extends Thread {
             System.out.println("Thread time working: " + timeElapsed / 1000 + "," + timeElapsed % 1000);
 
         } catch(InterruptedException ex){
+        }finally {
+            b.clear();
         }
     }
 }

@@ -24,5 +24,8 @@ public class BallThread extends Thread {
 
         } catch(InterruptedException ex){
         }
+        finally {
+            b.clear();
+        }
     }
 }
