@@ -18,6 +18,8 @@ public class ObjectCanvas extends JPanel {
         this.balls.remove(b);
     }
 
+    public int countBall(){ return balls.size();}
+
     public void addHole(Hole h) {
         this.holes.add(h);
     }

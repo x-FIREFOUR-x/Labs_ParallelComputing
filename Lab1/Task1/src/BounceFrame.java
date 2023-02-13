@@ -29,6 +29,7 @@ public class BounceFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 createBall();
+                System.out.println("Created thread name = " + canvas.countBall());
             }
         });
         buttonPanel.add(buttonOneBalls);
@@ -40,6 +41,7 @@ public class BounceFrame extends JFrame {
                 for (int i = 0; i < 100; i++) {
                     createBall();
                 }
+                System.out.println("Created thread name = " + canvas.countBall());
             }
         });
         buttonPanel.add(buttonHundredBalls);
@@ -51,18 +53,19 @@ public class BounceFrame extends JFrame {
                 for (int i = 0; i < 1000; i++) {
                     createBall();
                 }
+                System.out.println("Created thread name = " + canvas.countBall());
             }
         });
         buttonPanel.add(buttonThousandBalls);
 
-        JButton buttonClear = new JButton("Clear");
-        buttonClear.addActionListener(new ActionListener() {
+        JButton buttonStop = new JButton("Stop");
+        buttonStop.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.exit(0);
             }
         });
-        buttonPanel.add(buttonClear);
+        buttonPanel.add(buttonStop);
 
         content.add(buttonPanel, BorderLayout.SOUTH);
     }
@@ -74,7 +77,5 @@ public class BounceFrame extends JFrame {
 
         BallThread thread = new BallThread(b);
         thread.start();
-        System.out.println("Created thread name = " +
-                thread.getName());
     }
 }

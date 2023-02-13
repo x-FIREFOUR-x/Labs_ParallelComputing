@@ -32,6 +32,7 @@ public class BounceFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 createBall(BallType.NORMAL);
                 createBall(BallType.IMPORTANT);
+                System.out.println("Created thread name = " + canvas.countBall());
             }
         });
         buttonPanel.add(buttonOneBalls);
@@ -44,6 +45,7 @@ public class BounceFrame extends JFrame {
                     createBall(BallType.NORMAL);
                 }
                 createBall(BallType.IMPORTANT);
+                System.out.println("Created thread name = " + canvas.countBall());
             }
         });
         buttonPanel.add(buttonHundredBalls);
@@ -56,6 +58,7 @@ public class BounceFrame extends JFrame {
                     createBall(BallType.NORMAL);
                 }
                 createBall(BallType.IMPORTANT);
+                System.out.println("Created thread name = " + canvas.countBall());
             }
         });
         buttonPanel.add(buttonThousandBalls);
@@ -68,6 +71,7 @@ public class BounceFrame extends JFrame {
                     createBall(BallType.IMPORTANT);
                 }
                 createBall(BallType.NORMAL);
+                System.out.println("Created thread name = " + canvas.countBall());
             }
         });
         buttonPanel.add(buttonOneNormalBalls);
@@ -90,7 +94,5 @@ public class BounceFrame extends JFrame {
 
         BallThread thread = new BallThread(b);
         thread.start();
-        System.out.println("Created thread name = " +
-                thread.getName());
     }
 }

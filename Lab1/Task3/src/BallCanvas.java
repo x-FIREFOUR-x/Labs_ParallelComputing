@@ -13,6 +13,8 @@ public class BallCanvas extends JPanel {
         this.balls.remove(b);
     }
 
+    public int countBall(){ return balls.size();}
+
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);

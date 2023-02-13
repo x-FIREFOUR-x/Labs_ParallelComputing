@@ -6,12 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="a59df04a-c98c-4531-86d3-a27ef71c9cea" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Task1/src/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task1/src/Ball.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Task1/src/BallCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task1/src/BallCanvas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Task1/src/BallThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task1/src/BallThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Task3/src/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task3/src/Ball.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Task1/src/BounceFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task1/src/BounceFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Task2/src/BounceFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task2/src/BounceFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Task2/src/ObjectCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task2/src/ObjectCanvas.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Task3/src/BallCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task3/src/BallCanvas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Task3/src/BallThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task3/src/BallThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Task3/src/BounceFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task3/src/BounceFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Task4/src/BounceFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task4/src/BounceFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Task4/src/ObjectCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task4/src/ObjectCanvas.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -61,6 +61,8 @@ public class BounceFrame extends JFrame {
                 JoinBallThread joinThread = new JoinBallThread(redBall, thread);
                 thread.start();
                 joinThread.start();
+
+                System.out.println("Created thread name = " + canvas.countBall());
             }
         });
         buttonPanel.add(buttonTwoBalls);
@@ -83,6 +85,8 @@ public class BounceFrame extends JFrame {
                     joinThread.start();
                     prevThread = joinThread;
                 }
+
+                System.out.println("Created thread name = " + canvas.countBall());
             }
         });
         buttonPanel.add(buttonFiveBalls);

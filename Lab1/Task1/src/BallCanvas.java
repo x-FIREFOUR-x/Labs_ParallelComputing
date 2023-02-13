@@ -11,6 +11,7 @@ public class BallCanvas extends JPanel {
     public synchronized void removeBall(Ball b) {
         this.balls.remove(b);
     }
+    public int countBall(){ return balls.size();}
 
     @Override
     public void paintComponent(Graphics g) {
