@@ -19,10 +19,6 @@ public class BounceFrame extends JFrame {
         JPanel panel1 = InitializeBlock1(content);
         JPanel panel2 = InitializeBlock2(content);
 
-        //JPanel panel = new JPanel();
-        //panel.add(panel1, BorderLayout.NORTH);
-        //panel.add(panel2, BorderLayout.SOUTH);
-
         content.add(panel1, BorderLayout.CENTER);
         content.add(panel2, BorderLayout.AFTER_LAST_LINE);
     }
@@ -68,7 +64,6 @@ public class BounceFrame extends JFrame {
         });
         panel.add(buttonThreeThread);
 
-        //content.add(panel, BorderLayout.NORTH);
         return panel;
     }
 
@@ -105,7 +100,6 @@ public class BounceFrame extends JFrame {
         });
         panel.add(button);
 
-        //content.add(panel, BorderLayout.NORTH);
         return panel;
     }
 }
