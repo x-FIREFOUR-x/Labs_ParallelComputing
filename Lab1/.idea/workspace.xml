@@ -6,14 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="a59df04a-c98c-4531-86d3-a27ef71c9cea" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Task6/src/Counter.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task6/src/Counter/Counter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Task6/src/CounterThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task6/src/Thread/CounterThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Task6/src/Counter/SyncCounter.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task6/src/Counter/SyncCounter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Task6/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task6/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Task6/src/RunTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task6/src/RunTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Task6/Counter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Task6/CounterThread.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Task6/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Task6/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Task6/RunTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Task6/RunTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
