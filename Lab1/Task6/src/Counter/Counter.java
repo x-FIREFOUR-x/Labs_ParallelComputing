@@ -1,4 +1,6 @@
-public class Counter {
+package Counter;
+
+public class Counter implements ICounter {
     private int count = 0;
 
     public int getCount(){
