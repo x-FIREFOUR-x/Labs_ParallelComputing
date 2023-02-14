@@ -5,16 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a59df04a-c98c-4531-86d3-a27ef71c9cea" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Task1/src/BallCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task1/src/BallCanvas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Task1/src/BounceFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task1/src/BounceFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Task2/src/BounceFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task2/src/BounceFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Task2/src/ObjectCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task2/src/ObjectCanvas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Task3/src/BallCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task3/src/BallCanvas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Task3/src/BounceFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task3/src/BounceFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Task4/src/BounceFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task4/src/BounceFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Task4/src/ObjectCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task4/src/ObjectCanvas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Task5/src/SwitchThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task5/src/SwitchThread.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,6 +63,7 @@
       <option name="presentableId" value="Default" />
       <updated>1676240470235</updated>
       <workItem from="1676240471794" duration="2566000" />
+      <workItem from="1676400510530" duration="221000" />
     </task>
     <servers />
   </component>

@@ -5,8 +5,8 @@ public class SwitchThread {
 
     private static boolean active;
 
-    private static int countThread = 0;
-    private static int nextThreadWork = 0;
+    private static volatile int countThread = 0;
+    private static volatile int nextThreadWork = 0;
 
 
     public static SwitchThread Instance(){
@@ -31,12 +31,12 @@ public class SwitchThread {
         return countThread - 1;
     }
 
-    public boolean isPermission(int idThread)
+    public synchronized boolean isPermission(int idThread)
     {
         return idThread == nextThreadWork;
     }
 
-    public void toSwitchPermission(){
+    public synchronized void toSwitchPermission(){
         nextThreadWork++;
         if (nextThreadWork == countThread){
             nextThreadWork = 0;
