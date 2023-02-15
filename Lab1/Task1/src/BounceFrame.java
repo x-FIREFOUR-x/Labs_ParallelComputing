@@ -5,8 +5,8 @@ import java.awt.event.ActionListener;
 
 public class BounceFrame extends JFrame {
     private BallCanvas canvas;
-    public static final int WIDTH = 450;
-    public static final int HEIGHT = 350;
+    public static final int WIDTH = 700;
+    public static final int HEIGHT = 550;
     public BounceFrame() {
         this.setSize(WIDTH, HEIGHT);
         this.setTitle("Bounce programm 1");
@@ -29,7 +29,7 @@ public class BounceFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 createBall();
-                System.out.println("Created thread name = " + canvas.countBall());
+                System.out.println("Created threads= " + canvas.countBall());
             }
         });
         buttonPanel.add(buttonOneBalls);
@@ -41,7 +41,7 @@ public class BounceFrame extends JFrame {
                 for (int i = 0; i < 100; i++) {
                     createBall();
                 }
-                System.out.println("Created thread name = " + canvas.countBall());
+                System.out.println("Created threads= " + canvas.countBall());
             }
         });
         buttonPanel.add(buttonHundredBalls);
@@ -53,10 +53,22 @@ public class BounceFrame extends JFrame {
                 for (int i = 0; i < 1000; i++) {
                     createBall();
                 }
-                System.out.println("Created thread name = " + canvas.countBall());
+                System.out.println("Created threads= " + canvas.countBall());
             }
         });
         buttonPanel.add(buttonThousandBalls);
+
+        JButton buttonTenThousandBalls = new JButton("10000 Balls");
+        buttonTenThousandBalls.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                for (int i = 0; i < 10000; i++) {
+                    createBall();
+                }
+                System.out.println("Created threads= " + canvas.countBall());
+            }
+        });
+        buttonPanel.add(buttonTenThousandBalls);
 
         JButton buttonStop = new JButton("Stop");
         buttonStop.addActionListener(new ActionListener() {
