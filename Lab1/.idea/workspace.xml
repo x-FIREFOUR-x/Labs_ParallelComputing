@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="a59df04a-c98c-4531-86d3-a27ef71c9cea" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Task1/src/BounceFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task1/src/BounceFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Task5/src/BounceFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task5/src/BounceFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Task5/src/PrintThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task5/src/PrintThread.java" afterDir="false" />
     </list>
@@ -67,7 +66,7 @@
       <updated>1676240470235</updated>
       <workItem from="1676240471794" duration="2566000" />
       <workItem from="1676400510530" duration="221000" />
-      <workItem from="1676487541066" duration="4985000" />
+      <workItem from="1676487541066" duration="7015000" />
     </task>
     <servers />
   </component>

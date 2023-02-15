@@ -2,6 +2,8 @@ public class PrintThread extends Thread {
     char symbol;
     int countOutputSymbol;
 
+    private static final Object locker = new Object();
+
     int idInSwitcher;
 
     public PrintThread(char symbol, int countOutputSymbol){
@@ -19,19 +21,30 @@ public class PrintThread extends Thread {
 
     @Override
     public void run(){
-        while (countOutputSymbol != 0) {
-
-            if(SwitchThread.Instance().getActive()){
-                if(SwitchThread.Instance().isPermission(idInSwitcher)){
-                    System.out.print(symbol);
-                    countOutputSymbol--;
-                    SwitchThread.Instance().toSwitchPermission();
+        if(SwitchThread.Instance().getActive()){
+            for (int i = 0; i < countOutputSymbol; i++) {
+                try {
+                    regularPrint();
+                } catch (InterruptedException e) {
                 }
             }
-            else {
+        }
+        else {
+            for (int i = 0; i < countOutputSymbol; i++) {
                 System.out.print(symbol);
-                countOutputSymbol--;
             }
+        }
+    }
+
+    private void regularPrint() throws InterruptedException{
+        synchronized (locker){
+            while(!SwitchThread.Instance().isPermission(idInSwitcher)){
+                locker.wait();
+            }
+            System.out.print(symbol);
+
+            SwitchThread.Instance().toSwitchPermission();
+            locker.notifyAll();
         }
     }
 }

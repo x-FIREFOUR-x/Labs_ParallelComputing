@@ -37,8 +37,8 @@ public class BounceFrame extends JFrame {
                 SwitchThread.Instance().setActive(checkBox.isSelected());
                 SwitchThread.Instance().resetSwitch();
 
-                PrintThread thread1 = new PrintThread(checkBox, '-', 50);
-                PrintThread thread2 = new PrintThread(checkBox, '|', 50);
+                PrintThread thread1 = new PrintThread('-', 50);
+                PrintThread thread2 = new PrintThread('|', 50);
                 thread1.start();
                 thread2.start();
             }
@@ -54,9 +54,9 @@ public class BounceFrame extends JFrame {
                 SwitchThread.Instance().setActive(checkBox.isSelected());
                 SwitchThread.Instance().resetSwitch();
 
-                PrintThread thread1 = new PrintThread(checkBox, '-', 50);
-                PrintThread thread2 = new PrintThread(checkBox, '|', 50);
-                PrintThread thread3 = new PrintThread(checkBox, '*', 50);
+                PrintThread thread1 = new PrintThread('-', 50);
+                PrintThread thread2 = new PrintThread('|', 50);
+                PrintThread thread3 = new PrintThread('*', 50);
                 thread1.start();
                 thread2.start();
                 thread3.start();
@@ -88,7 +88,7 @@ public class BounceFrame extends JFrame {
 
                     ArrayList<PrintThread> threads = new ArrayList<PrintThread>();
                     for (int i = 0; i < countThreads; i++) {
-                        PrintThread thread = new PrintThread(checkBox, (char)(i + 33), 25);
+                        PrintThread thread = new PrintThread((char)(i + 33), 25);
                         threads.add(thread);
                     }
                     for (int i = 0; i < threads.size(); i++) {
