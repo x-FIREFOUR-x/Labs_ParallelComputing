@@ -10,7 +10,10 @@ public class Main {
         StandardAlgorithm standardAlgorithm = new StandardAlgorithm();
         Matrix resultMatrix1 = standardAlgorithm.multiply(matrix1, matrix2);
 
-        
+        TapeAlgorithm tapeAlgorithm = new TapeAlgorithm(5);
+        Matrix resultMatrix2 = tapeAlgorithm.multiply(matrix1, matrix2);
+
+        boolean equal = resultMatrix1.Equal(resultMatrix2);
 
     }
 }
