@@ -15,6 +15,8 @@ public class TapeAlgorithm {
 
     public Matrix multiply(Matrix matrix1, Matrix matrix2){
         Matrix resultMatrix = new Matrix(matrix1.getCountRows(), matrix2.getCountColumns());
+        Matrix transposedMatrix2 = matrix2.clone();
+        transposedMatrix2.transpose();
 
         ExecutorService executor = Executors.newFixedThreadPool(countThread);
         ArrayList<TaskTapeAlgorithm> callables = new ArrayList<TaskTapeAlgorithm>();
@@ -22,7 +24,8 @@ public class TapeAlgorithm {
 
         for (int i = 0; i < matrix1.getCountRows(); i++) {
             for (int j = 0; j < matrix2.getCountColumns(); j++) {
-                TaskTapeAlgorithm task = new TaskTapeAlgorithm(matrix1.getRow(i), matrix2.getColumn(j));
+                int idxRow = (j + i) % matrix1.getCountRows();
+                TaskTapeAlgorithm task = new TaskTapeAlgorithm(matrix1.getRow(idxRow), transposedMatrix2.getRow(j));
                 callables.add(task);
             }
 
@@ -36,11 +39,13 @@ public class TapeAlgorithm {
 
         }
         executor.shutdown();
+
         try{
             for (int i = 0; i < resultMatrix.getCountRows(); i++) {
                 for (int j = 0; j < resultMatrix.getCountColumns(); j++) {
                     var future = futures.get(i * resultMatrix.getCountColumns() + j);
-                    resultMatrix.setElement(i, j, future.get());
+                    int idxRow = (j + i) % matrix1.getCountRows();
+                    resultMatrix.setElement(idxRow, j, future.get());
                 }
             }
         }

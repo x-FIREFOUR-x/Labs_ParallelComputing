@@ -70,4 +70,25 @@ public class Matrix {
 
         return true;
     }
+
+    public Matrix clone()
+    {
+        Matrix clone = new Matrix(this.countRows, this.countColumns);
+        for (int i = 0; i < clone.countRows; i++) {
+            for (int j = 0; j < clone.countColumns; j++) {
+                clone.setElement(i, j, this.data[i][j]);
+            }
+        }
+        return clone;
+    }
+
+    public void transpose(){
+        for (int i = 0; i < countRows; i++) {
+            for (int j = i + 1; j < countColumns; j++) {
+                int buf = data[i][j];
+                data[i][j] = data[j][i];
+                data[j][i] = buf;
+            }
+        }
+    }
 }
