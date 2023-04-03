@@ -44,9 +44,7 @@ public class TapeAlgorithm {
                 }
             }
         }
-        catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        } catch (ExecutionException e) {
+        catch (InterruptedException | ExecutionException e) {
             throw new RuntimeException(e);
         }
 

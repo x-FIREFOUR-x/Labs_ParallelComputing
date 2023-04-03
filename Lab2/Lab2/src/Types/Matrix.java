@@ -5,21 +5,15 @@ import java.util.Objects;
 import java.util.Random;
 
 public class Matrix {
-    ArrayList<ArrayList<Integer>> data;
+    int[][] data;
 
-    public Matrix(ArrayList<ArrayList<Integer>> matrix) {
-        data = matrix;
-    }
+    int countRows;
+    int countColumns;
+
     public Matrix(int countRows, int countColumns){
-        data = new ArrayList<>();
-        for (int i = 0; i < countRows; i++)
-        {
-            ArrayList<Integer> row = new ArrayList<>();
-            for (int j = 0; j < countColumns; j++) {
-                row.add(0);
-            }
-            data.add(row);
-        }
+        this.countRows = countRows;
+        this.countColumns = countColumns;
+        data = new int[countRows][countColumns];
     }
     public Matrix(int countRows, int countColumns, int randomMin, int randomMax){
         this(countRows, countColumns);
@@ -28,50 +22,39 @@ public class Matrix {
         for (int i = 0; i < countRows; i++) {
             for (int j = 0; j < countColumns; j++) {
                 int numb = random.nextInt() % (randomMax - randomMin + 1) + randomMin;
-                data.get(i).set(j, numb);
+                data[i][j] = numb;
             }
         }
     }
 
     public int getCountRows() {
-        return data.size();
+        return countRows;
     }
     public int getCountColumns() {
-        if (getCountRows() == 0)
-            return 0;
-        else
-            return data.get(0).size();
+        return  countColumns;
     }
 
     public int getElement(int idxRow, int idxColumn)
     {
-        return data.get(idxRow).get(idxColumn);
+        return data[idxRow][idxColumn];
     }
     public void setElement(int idxRow, int idxColumn, int element) {
-        data.get(idxRow).set(idxColumn, element);
+        data[idxRow][idxColumn] = element;
     }
 
-    public ArrayList<Integer> getRow(int index){
-        return data.get(index);
+    public int[] getRow(int index){
+        return data[index];
     }
-    public void setRow(int index, ArrayList<Integer> row){
-        data.set(index, row);
+    public void setRow(int index, int[] row){
+        data[index] = row;
     }
 
-    public ArrayList<Integer> getColumn(int index){
-        ArrayList<Integer> column = new ArrayList<>();
+    public int[] getColumn(int index){
+        int[] column = new int[countColumns];
         for (int i = 0; i < getCountRows(); i++) {
-            column.add(data.get(i).get(index));
+            column[i] = (data[i][index]);
         }
         return column;
-    }
-
-    public ArrayList<ArrayList<Integer>> getColumns(){
-        ArrayList<ArrayList<Integer>> columns = new ArrayList<>();
-        for (int i = 0; i < getCountColumns(); i++) {
-            columns.add(getColumn(i));
-        }
-        return columns;
     }
 
     public boolean Equal(Matrix matrix){
@@ -80,7 +63,7 @@ public class Matrix {
 
         for (int i = 0; i < matrix.getCountRows(); i++) {
             for (int j = 0; j < matrix.getCountColumns(); j++) {
-                if (!Objects.equals(this.data.get(i).get(j), matrix.data.get(i).get(j)))
+                if (!Objects.equals(this.data[i][j], matrix.getElement(i, j)))
                     return false;
             }
         }

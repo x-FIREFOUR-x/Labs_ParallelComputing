@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.concurrent.Callable;
 
 public class TaskTapeAlgorithm implements Callable<Integer> {
-    private ArrayList<Integer> row;
-    private ArrayList<Integer> column;
+    private int[] row;
+    private int[] column;
 
-    TaskTapeAlgorithm(ArrayList<Integer> rowMatrix1, ArrayList<Integer> columnMatrix2)
+    TaskTapeAlgorithm(int[] rowMatrix1, int[] columnMatrix2)
     {
         row = rowMatrix1;
         column = columnMatrix2;
@@ -16,9 +16,9 @@ public class TaskTapeAlgorithm implements Callable<Integer> {
     @Override
     public Integer call(){
         int element = 0;
-        for(int j = 0; j < row.size(); j++)
+        for(int j = 0; j < row.length; j++)
         {
-            element += row.get(j) * column.get(j);
+            element += row[j] * column[j];
         }
         return element;
     }
