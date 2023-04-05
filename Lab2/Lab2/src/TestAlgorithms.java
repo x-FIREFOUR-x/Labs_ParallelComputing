@@ -50,7 +50,5 @@ public class TestAlgorithms {
 
         boolean equal = resultMatrix1.Equal(resultMatrix2);
         boolean equal2 = resultMatrix1.Equal(resultMatrix3);
-
-
     }
 }

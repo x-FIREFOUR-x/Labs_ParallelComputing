@@ -1,6 +1,5 @@
 package TapeAlgoMultiplyMatrix;
 
-import java.util.ArrayList;
 import java.util.concurrent.Callable;
 
 public class TaskTapeAlgorithm implements Callable<Integer> {
