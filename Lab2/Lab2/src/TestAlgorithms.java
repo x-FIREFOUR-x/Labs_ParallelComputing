@@ -1,3 +1,4 @@
+import FoxAlgo.FoxAlgorithm;
 import StandardAlgoMultiplyMatrix.StandardAlgorithm;
 import TapeAlgoMultiplyMatrix.TapeAlgorithm;
 import Types.Matrix;
@@ -36,6 +37,20 @@ public class TestAlgorithms {
         System.out.println(endTime - startTime);
 
 
+        //
+        startTime = System.currentTimeMillis();
+
+        FoxAlgorithm foxAlgorithm = new FoxAlgorithm(countThread);
+        Matrix resultMatrix3 = foxAlgorithm.multiply(matrix1, matrix2);
+
+        endTime = System.currentTimeMillis();
+        System.out.print("Time working tape algo: ");
+        System.out.println(endTime - startTime);
+
+
         boolean equal = resultMatrix1.Equal(resultMatrix2);
+        boolean equal2 = resultMatrix1.Equal(resultMatrix3);
+
+
     }
 }

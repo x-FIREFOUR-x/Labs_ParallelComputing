@@ -91,4 +91,15 @@ public class Matrix {
             }
         }
     }
+
+    public Matrix add(Matrix matrix){
+        Matrix result = new Matrix(this.countRows, this.countColumns);
+        for (int i = 0; i < this.countRows; i++) {
+            for (int j = 0; j < this.countColumns; j++) {
+                int elem = data[i][j] + matrix.getElement(i, j);
+                result.setElement(i, j, elem);
+            }
+        }
+        return result;
+    }
 }
