@@ -19,7 +19,7 @@ public class TestAlgorithms {
             matrix2.print();
         }
 
-        /*
+
         // Not parallel algorithm multiply matrices
         long startTime = System.currentTimeMillis();
 
@@ -33,15 +33,15 @@ public class TestAlgorithms {
         if(printedMatrices) {
             resultMatrix1.print();
         }
-        */
+
 
         // Tape algorithm multiply matrices
-        long startTime = System.currentTimeMillis();
+        startTime = System.currentTimeMillis();
 
         TapeAlgorithm tapeAlgorithm = new TapeAlgorithm(countThread);
         Matrix resultMatrix2 = tapeAlgorithm.multiply(matrix1, matrix2);
 
-        long endTime = System.currentTimeMillis();
+        endTime = System.currentTimeMillis();
         System.out.print("Time working tape algo: ");
         System.out.println(endTime - startTime);
 
