@@ -56,7 +56,7 @@ public class FoxAlgorithm {
 
     private Matrix[][] MatrixToMatrixMatrices(Matrix matrix, int sizeMatrixM){
         Matrix[][] matrixMatrices = new Matrix[sizeMatrixM][sizeMatrixM];
-        int sizeInternal = (matrix.getCountColumns() + sizeMatrixM - 1) / sizeMatrixM;
+        int sizeInternal = (int) ((matrix.getCountColumns() - 1) / sizeMatrixM) + 1;
 
         for (int i = 0; i < sizeMatrixM; i++) {
             for (int j = 0; j < sizeMatrixM; j++) {

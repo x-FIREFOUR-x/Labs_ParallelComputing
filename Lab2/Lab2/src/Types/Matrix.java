@@ -20,7 +20,7 @@ public class Matrix {
         Random random = new Random();
         for (int i = 0; i < countRows; i++) {
             for (int j = 0; j < countColumns; j++) {
-                int numb = random.nextInt() % (randomMax - randomMin + 1) + randomMin;
+                int numb = (random.nextInt(randomMax - randomMin + 1)) + randomMin;
                 data[i][j] = numb;
             }
         }
@@ -100,5 +100,15 @@ public class Matrix {
             }
         }
         return result;
+    }
+
+    public void print(){
+        for (int i = 0; i < countRows; i++) {
+            for (int j = 0; j < countColumns; j++) {
+                System.out.print(data[i][j]+ " ");
+            }
+            System.out.println();
+        }
+        System.out.println();
     }
 }
