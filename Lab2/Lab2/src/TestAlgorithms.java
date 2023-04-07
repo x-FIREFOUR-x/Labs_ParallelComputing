@@ -1,6 +1,6 @@
 import FoxAlgo.FoxAlgorithm;
 import StandardAlgoMultiplyMatrix.StandardAlgorithm;
-import TapeAlgoMultiplyMatrix.TapeAlgorithm;
+import TapeAlgoMultiplyMatrix.StripeAlgorithm;
 import Types.Matrix;
 
 public class TestAlgorithms {
@@ -35,14 +35,14 @@ public class TestAlgorithms {
         }
 
 
-        // Tape algorithm multiply matrices
+        // Stripe algorithm multiply matrices
         startTime = System.currentTimeMillis();
 
-        TapeAlgorithm tapeAlgorithm = new TapeAlgorithm(countThread);
-        Matrix resultMatrix2 = tapeAlgorithm.multiply(matrix1, matrix2);
+        StripeAlgorithm stripeAlgorithm = new StripeAlgorithm(countThread);
+        Matrix resultMatrix2 = stripeAlgorithm.multiply(matrix1, matrix2);
 
         endTime = System.currentTimeMillis();
-        System.out.print("Time working tape algo: ");
+        System.out.print("Time working stripe algo: ");
         System.out.println(endTime - startTime);
 
         if(printedMatrices) {

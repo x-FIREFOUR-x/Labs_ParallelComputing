@@ -2,11 +2,11 @@ package TapeAlgoMultiplyMatrix;
 
 import java.util.concurrent.Callable;
 
-public class TaskTapeAlgorithm implements Callable<Integer> {
+public class TaskStipeAlgorithm implements Callable<Integer> {
     private int[] row;
     private int[] column;
 
-    TaskTapeAlgorithm(int[] rowMatrix1, int[] columnMatrix2)
+    TaskStipeAlgorithm(int[] rowMatrix1, int[] columnMatrix2)
     {
         row = rowMatrix1;
         column = columnMatrix2;

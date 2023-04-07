@@ -6,10 +6,10 @@ import java.util.concurrent.Future;
 import java.util.ArrayList;
 import java.util.concurrent.*;
 
-public class TapeAlgorithm {
+public class StripeAlgorithm {
     final int countThread;
 
-    public TapeAlgorithm(int countThread){
+    public StripeAlgorithm(int countThread){
         this.countThread = countThread;
     }
 
@@ -19,13 +19,13 @@ public class TapeAlgorithm {
         transposedMatrix2.transpose();
 
         ExecutorService executor = Executors.newFixedThreadPool(countThread);
-        ArrayList<TaskTapeAlgorithm> callables = new ArrayList<TaskTapeAlgorithm>();
+        ArrayList<TaskStipeAlgorithm> callables = new ArrayList<TaskStipeAlgorithm>();
         ArrayList<Future<Integer>> futures = new ArrayList<Future<Integer>>();
 
         for (int i = 0; i < matrix1.getCountRows(); i++) {
             for (int j = 0; j < matrix2.getCountColumns(); j++) {
                 int idxRow = (j + i) % matrix1.getCountRows();
-                TaskTapeAlgorithm task = new TaskTapeAlgorithm(matrix1.getRow(idxRow), transposedMatrix2.getRow(j));
+                TaskStipeAlgorithm task = new TaskStipeAlgorithm(matrix1.getRow(idxRow), transposedMatrix2.getRow(j));
                 callables.add(task);
             }
 
