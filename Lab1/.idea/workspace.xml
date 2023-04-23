@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="a59df04a-c98c-4531-86d3-a27ef71c9cea" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Task5/src/BounceFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task5/src/BounceFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Task5/src/PrintThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task5/src/PrintThread.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +38,7 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;corretto-17&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Project/6Semestr/ParallelComputing/Lab1/Task4/src&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Project/6Semestr/ParallelComputing/Lab3&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
@@ -67,6 +65,10 @@
       <workItem from="1676240471794" duration="2566000" />
       <workItem from="1676400510530" duration="221000" />
       <workItem from="1676487541066" duration="7015000" />
+      <workItem from="1682273532102" duration="50000" />
+      <workItem from="1682273945103" duration="43000" />
+      <workItem from="1682274011644" duration="4000" />
+      <workItem from="1682274215739" duration="69000" />
     </task>
     <servers />
   </component>
