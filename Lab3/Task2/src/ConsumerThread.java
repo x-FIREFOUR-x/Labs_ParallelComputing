@@ -1,15 +1,12 @@
 public class ConsumerThread extends Thread{
     private final SharedArray sharedArray;
 
-    private final int count;
-
-    public ConsumerThread(SharedArray sharedArray, int count) {
+    public ConsumerThread(SharedArray sharedArray) {
         this.sharedArray = sharedArray;
-        this.count = count;
     }
 
     public void run(){
-        for (int i = 1; i <= count; i++) {
+        while (true) {
             int value = sharedArray.take();
             System.out.println(" CONSUMER Get element: " + value);
         }
