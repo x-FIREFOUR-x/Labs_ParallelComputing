@@ -2,9 +2,9 @@ import java.util.ArrayList;
 
 public class JournalTest {
     public static void main(String[] args) {
-        Group group1 = new Group(20);
-        Group group2 = new Group(30);
-        Group group3 = new Group(25);
+        Group group1 = new Group( "IP-01", 20);
+        Group group2 = new Group("IP-02", 30);
+        Group group3 = new Group("IP-03", 25);
 
         Journal journal = new Journal();
         journal.addGroup(group1);
@@ -34,10 +34,13 @@ public class JournalTest {
             assistant1.publishingGrades();
             assistant2.publishingGrades();
             assistant3.publishingGrades();
+
+            lecturer.waitEndPublishingGrades();
+            assistant1.waitEndPublishingGrades();
+            assistant2.waitEndPublishingGrades();
+            assistant3.waitEndPublishingGrades();
         }
 
-        System.out.println(journal.getGrades(group1.getStudent(0)));
-
-        int t = 0;
+        journal.print();
     }
 }

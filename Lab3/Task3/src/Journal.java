@@ -15,8 +15,7 @@ public class Journal {
     }
 
     public void addGroup(Group group){
-        locker.lock();
-        try {
+        synchronized (this) {
             groups.add(group);
             for(int i = 0; i < group.getCountStudent(); i++){
                 Student student = group.getStudent(i);
@@ -24,17 +23,30 @@ public class Journal {
                     studentGrades.put(student, new ArrayList<>());
                 }
             }
-        }finally {
-            locker.unlock();
         }
     }
 
     public void addGrade(Student student, int grade)
     {
-        studentGrades.get(student).add(grade);
+        synchronized (student) {
+            studentGrades.get(student).add(grade);
+        }
     }
 
     public List<Integer> getGrades(Student student){
         return studentGrades.get(student);
+    }
+
+    public void print()
+    {
+        for(var group: groups) {
+            System.out.println("\n" + group.getName());
+            System.out.println("-----------------------------------------------");
+            for (int i = 0; i < group.getCountStudent(); i++) {
+                Student student = group.getStudent(i);
+                System.out.print(student.getId().toString() + ": ");
+                System.out.println(getGrades(student));
+            }
+        }
     }
 }
