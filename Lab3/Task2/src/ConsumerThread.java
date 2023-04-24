@@ -1,19 +1,17 @@
-import java.time.LocalTime;
-import java.util.Random;
-
 public class ConsumerThread extends Thread{
     private final SharedArray sharedArray;
 
-    public ConsumerThread(SharedArray sharedArray) {
+    private final int count;
+
+    public ConsumerThread(SharedArray sharedArray, int count) {
         this.sharedArray = sharedArray;
+        this.count = count;
     }
 
     public void run(){
-        Random random = new Random();
-        for (int i = 0; i < 100; i++) {
+        for (int i = 1; i <= count; i++) {
             int value = sharedArray.take();
-            System.out.println("(" + LocalTime.now() + ")"
-                    + " CONSUMER Get element: " + value);
+            System.out.println(" CONSUMER Get element: " + value);
         }
     }
 }

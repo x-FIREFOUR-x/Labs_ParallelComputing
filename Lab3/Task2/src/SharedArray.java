@@ -4,28 +4,26 @@ import java.util.concurrent.locks.ReentrantLock;
 public class SharedArray {
     private final ArrayList<Integer> array;
 
+    private final ReentrantLock locker = new ReentrantLock();
+
     public SharedArray(int size) {
         this.array = new ArrayList<>(size);
     }
 
-    public int take() {
-        synchronized (this){
-            if(array.size() > 0){
-                int value = array.get(0);
-                array.remove(0);
-                return value;
-            }
-            else {
-                System.out.println(array.size());
-                return 0;
-
-            }
+    public synchronized int take() {
+        while (array.size() == 0) {
+            try {
+                wait();
+            } catch (InterruptedException ignore){}
         }
+        int value = array.get(0);
+        array.remove(0);
+        return value;
     }
 
-    public void put(int element) {
-        synchronized (this){
-            array.add(element);
-        }
+
+    public synchronized void put(int element) {
+        array.add(element);
+        notifyAll();
     }
 }
