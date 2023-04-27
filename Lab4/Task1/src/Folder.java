@@ -19,9 +19,7 @@ public class Folder {
     static Folder fromDirectory(File dir) throws IOException {
         List<Document> documents = new LinkedList<>();
         List<Folder> subFolders = new LinkedList<>();
-
-        System.out.println(dir);
-
+        
         for (File entry : Objects.requireNonNull(dir.listFiles())) {
             if (entry.isDirectory()) {
                 subFolders.add(Folder.fromDirectory(entry));
