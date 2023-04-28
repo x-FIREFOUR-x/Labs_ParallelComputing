@@ -31,7 +31,7 @@ public class Bank {
             test();
     }
 
-    public synchronized void transferSyncBlock(int from, int to, int amount) {
+    public void transferSyncBlock(int from, int to, int amount) {
         synchronized (this) {
             accounts[from] -= amount;
             accounts[to] += amount;
@@ -41,7 +41,7 @@ public class Bank {
         }
     }
 
-    public synchronized void transferLock(int from, int to, int amount) {
+    public void transferLock(int from, int to, int amount) {
         locker.lock();
         try {
             accounts[from] -= amount;
