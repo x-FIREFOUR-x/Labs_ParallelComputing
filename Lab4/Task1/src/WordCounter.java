@@ -2,7 +2,12 @@ import java.util.HashMap;
 import java.util.concurrent.*;
 
 public class WordCounter {
-    private final ForkJoinPool forkJoinPool = new ForkJoinPool(4);
+    private final ForkJoinPool forkJoinPool;
+
+    public WordCounter(int countThreads) {
+        forkJoinPool = new ForkJoinPool(countThreads);
+    }
+
     public static String[] wordsIn(String line) {
         return line.trim().split("(\\s|\\p{Punct})+");
     }

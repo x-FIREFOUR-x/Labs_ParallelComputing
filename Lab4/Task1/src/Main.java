@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
         File file = new File("Task1\\TextsFolder");
         Folder folder = Folder.fromDirectory(file);
-        WordCounter wordCounter = new WordCounter();
+        WordCounter wordCounter = new WordCounter(8);
 
         long startTime = System.currentTimeMillis();
         HashMap<Integer, Integer> map = wordCounter.occurrencesCountParallel(folder);
