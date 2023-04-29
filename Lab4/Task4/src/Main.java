@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
         File file = new File("TestText\\Texts");
         Folder folder = Folder.fromDirectory(file);
-        ExistWordsChecker existWordsChecker = new ExistWordsChecker(8);
+        ExistWordsChecker existWordsChecker = new ExistWordsChecker(2);
 
         ArrayList<String> words = new ArrayList<>();
         words.add("olexandr");
@@ -17,7 +17,6 @@ public class Main {
         words.add("unique22");
         words.add("unique33");
         words.add("unique44");
-        words.add("unique55");
 
         long startTime = System.currentTimeMillis();
         HashMap<String, List<String>> fileAndExistWords = existWordsChecker.findCommonWordsParallel(folder, words);

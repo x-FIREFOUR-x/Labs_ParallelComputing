@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
         File file = new File("TestText\\IdenticalTexts");
         Folder folder = Folder.fromDirectory(file);
-        CommonWordCounter commonWordSearcher = new CommonWordCounter(8);
+        CommonWordCounter commonWordSearcher = new CommonWordCounter(2);
 
         long startTime = System.currentTimeMillis();
         HashSet<String> commonWords = commonWordSearcher.findCommonWordsParallel(folder);
