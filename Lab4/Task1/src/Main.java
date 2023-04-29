@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        File file = new File("IdenticalTexts");
+        File file = new File("TestText\\IdenticalTexts");
         Folder folder = Folder.fromDirectory(file);
         WordCounter wordCounter = new WordCounter(8);
 
