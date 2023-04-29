@@ -17,6 +17,7 @@ public class Document {
     }
 
     static Document fromFile(File file) throws IOException {
+        System.out.println(file);
         List<String> lines = new LinkedList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line = reader.readLine();

@@ -22,6 +22,12 @@ class FolderSearchTask extends RecursiveTask<HashMap<Integer, Integer>> {
         HashMap<Integer, Integer> countLengthsMap = new HashMap<>();
         List<RecursiveTask<HashMap<Integer, Integer>>> tasks = new LinkedList<>();
 
+        for (Folder subFolder : folder.getSubFolders()) {
+            FolderSearchTask task = new FolderSearchTask(subFolder);
+            tasks.add(task);
+            task.fork();
+        }
+
         for (Document document : folder.getDocuments()) {
             DocumentSearchTask task = new DocumentSearchTask(document);
             tasks.add(task);
