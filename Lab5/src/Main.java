@@ -3,7 +3,7 @@ public class Main {
         QueueModel queue = new QueueModel(10);
 
         long timeStart = System.currentTimeMillis();
-        long timeWorkingModel = 6000;
+        long timeWorkingModel = 5000;
 
         RunModel model = new RunModel(queue, timeStart, timeWorkingModel, 1,  3);
         model.start();
