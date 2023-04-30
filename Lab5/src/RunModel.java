@@ -4,7 +4,9 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
 
-public class RunModel extends Thread {
+public class RunModel implements Runnable {
+
+    private int indexModel;
 
     private QueueModel queue;
     private long startTime;
@@ -13,7 +15,10 @@ public class RunModel extends Thread {
     private int countProducers;
     private int countConsumers;
 
-    public RunModel(QueueModel queue, long startTime, long workingTime, int countProducers , int countConsumers){
+    public RunModel(int indexModel, QueueModel queue, long startTime,
+                    long workingTime, int countProducers , int countConsumers)
+    {
+        this.indexModel = indexModel;
         this.queue = queue;
         this.startTime = startTime;
         this.workingTime = workingTime;
@@ -45,10 +50,11 @@ public class RunModel extends Thread {
 
             double chanceOfRejected =(double)countRejected / countRequest;
 
-            System.out.println("Chance rejection:" + chanceOfRejected);
-            System.out.println("Reject:" + countRejected);
-            System.out.println("Request:" + countRequest);
-
+            System.out.println("Model: " + indexModel + "\n"
+                    + "Chance rejection:" + chanceOfRejected + "\n"
+                    + "Reject:" + countRejected + "\n"
+                    + "Request:" + countRequest + "\n"
+            );
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
