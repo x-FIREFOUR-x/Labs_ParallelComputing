@@ -7,6 +7,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 public class RunModel implements Runnable {
 
     private int indexModel;
+    private final boolean activeLogger;
 
     private QueueModel queue;
     private long startTime;
@@ -16,9 +17,10 @@ public class RunModel implements Runnable {
     private int countConsumers;
 
     public RunModel(int indexModel, QueueModel queue, long startTime,
-                    long workingTime, int countProducers , int countConsumers)
+                    long workingTime, int countProducers , int countConsumers, boolean activeLogger)
     {
         this.indexModel = indexModel;
+        this.activeLogger = activeLogger;
         this.queue = queue;
         this.startTime = startTime;
         this.workingTime = workingTime;
@@ -42,18 +44,26 @@ public class RunModel implements Runnable {
                     Executors.callable(new ConsumerTasks(queue, startTime, workingTime), null));
         }
 
+        LoggerModel loggerModel = new LoggerModel(queue, startTime, workingTime);
+
         try{
+            if(activeLogger){
+                loggerModel.start();
+            }
+
             executor.invokeAll(callables);
 
+            if(activeLogger){
+                loggerModel.join();
+            }
+
             int countRejected = queue.getCountRejected();
-            int countRequest = queue.getCountRequest();
-
+            int countRequest = queue.getCountRequested();
             double chanceOfRejected =(double)countRejected / countRequest;
-
             System.out.println("Model: " + indexModel + "\n"
                     + "Chance rejection:" + chanceOfRejected + "\n"
-                    + "Reject:" + countRejected + "\n"
-                    + "Request:" + countRequest + "\n"
+                    + "Rejected:" + countRejected + "\n"
+                    + "Requested:" + countRequest + "\n"
             );
         } catch (InterruptedException e) {
             throw new RuntimeException(e);

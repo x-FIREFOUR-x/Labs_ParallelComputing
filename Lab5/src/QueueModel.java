@@ -12,14 +12,21 @@ public class QueueModel {
     final Condition notEmpty = locker.newCondition();
 
     private int countRejected = 0;
-    private int countRequest = 0;
+    private int countRequested = 0;
+
+    private int countServed = 0;
 
     public int getCountRejected(){
         return countRejected;
     }
 
-    public int getCountRequest(){
-        return countRequest;
+    public int getCountRequested(){
+        return countRequested;
+    }
+
+    public int getCountServed()
+    {
+        return countServed;
     }
 
     public QueueModel(int size) {
@@ -31,7 +38,7 @@ public class QueueModel {
     public void put(int item){
         locker.lock();
         try {
-            countRequest++;
+            countRequested++;
             if(currentSize == maxSize){
                 countRejected++;
                 return;
@@ -47,16 +54,15 @@ public class QueueModel {
     }
 
     public int pop(){
-            //pop with queue
         locker.lock();
         int item;
         try{
             while(currentSize == 0){
                 notEmpty.await();
             }
-
             item = items.remove(0);
             currentSize--;
+            countServed++;
         } catch (InterruptedException e){
             throw new RuntimeException(e);
         }finally {

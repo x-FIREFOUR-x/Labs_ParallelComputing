@@ -16,13 +16,18 @@ public class Main {
         ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(8);
         List<Callable<Void>> models = new ArrayList<>();
 
-        RunModel model = new RunModel(1, queue, timeStart, timeWorkingModel, 1,  3);
+        RunModel model = new RunModel(
+                1,  queue, timeStart, timeWorkingModel, 1,  3, true);
         models.add(Executors.callable(model, null));
 
-        RunModel model2 = new RunModel(2, queue2, timeStart, timeWorkingModel, 1,  3);
+        /*
+        RunModel model2 = new RunModel(
+                2, queue2, timeStart, timeWorkingModel, 1,  3, false);
         models.add(Executors.callable(model2, null));
-        RunModel model3 = new RunModel(3, queue3, timeStart, timeWorkingModel, 1,  3);
+        RunModel model3 = new RunModel(
+                3, queue3, timeStart, timeWorkingModel, 1,  3, false);
         models.add(Executors.callable(model3, null));
+        */
 
         try{
             executor.invokeAll(models);
