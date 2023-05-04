@@ -4,7 +4,7 @@ import java.util.HashSet;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        File file = new File("TestText\\IdenticalTexts");
+        File file = new File("TestText\\Texts");
         Folder folder = Folder.fromDirectory(file);
         CommonWordCounter commonWordSearcher = new CommonWordCounter(2);
 

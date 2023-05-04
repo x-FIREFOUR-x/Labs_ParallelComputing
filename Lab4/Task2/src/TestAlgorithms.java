@@ -32,33 +32,47 @@ public class TestAlgorithms {
             resultMatrix1.print();
         }
 
+        long totalTime = 0;
+        int countTest = 5;
+
         // Fox algorithm multiply matrices
-        startTime = System.currentTimeMillis();
+        totalTime = 0;
+        Matrix resultMatrix2 = null;
+        for (int i = 0; i < countTest; i++) {
+            startTime = System.currentTimeMillis();
+            FoxAlgorithm foxAlgorithm = new FoxAlgorithm(countThread);
+            resultMatrix2 = foxAlgorithm.multiply(matrix1, matrix2);
+            endTime = System.currentTimeMillis();
+            totalTime += endTime - startTime;
+        }
 
-        FoxAlgorithm foxAlgorithm = new FoxAlgorithm(countThread);
-        Matrix resultMatrix2 = foxAlgorithm.multiply(matrix1, matrix2);
 
-        endTime = System.currentTimeMillis();
-        System.out.print("Time working fox algo: ");
-        System.out.println(endTime - startTime);
+        System.out.print("Time working fox algo (FixedThreadPool): ");
+        System.out.println(totalTime / countTest);
 
         if(printedMatrices) {
             resultMatrix2.print();
         }
 
         // Fox algorithm multiply matrices forkjoin
-        startTime = System.currentTimeMillis();
+        totalTime = 0;
+        Matrix resultMatrix3 = null;
+        for (int i = 0; i < countTest; i++) {
+            startTime = System.currentTimeMillis();
+            ForkJoinFoxAlgorithm fjfoxAlgorithm = new ForkJoinFoxAlgorithm(countThread);
+            resultMatrix3 = fjfoxAlgorithm.multiply(matrix1, matrix2);
+            endTime = System.currentTimeMillis();
+            totalTime += endTime - startTime;
+        }
 
-        ForkJoinFoxAlgorithm fjfoxAlgorithm = new ForkJoinFoxAlgorithm(countThread);
-        Matrix resultMatrix3 = fjfoxAlgorithm.multiply(matrix1, matrix2);
-
-        endTime = System.currentTimeMillis();
-        System.out.print("Time working fox algo: ");
-        System.out.println(endTime - startTime);
+        System.out.print("Time working fox algo (ForkJoinPool): ");
+        System.out.println(totalTime / countTest);
 
         if(printedMatrices) {
             resultMatrix3.print();
         }
+
+
 
         System.out.println(resultMatrix1.Equal(resultMatrix2));
         System.out.println(resultMatrix1.Equal(resultMatrix3));

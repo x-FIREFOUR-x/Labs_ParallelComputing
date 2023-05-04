@@ -27,6 +27,7 @@ public class Main {
         double D = (totalLength/count) - Math.pow(meanLength,2);
         double G = Math.sqrt(D);
 
+        System.out.println("Count: " + count);
         System.out.println("Mean length: " + meanLength);
         System.out.println("Dispersion: " + D);
         System.out.println("Mean square deviation: " + G);
