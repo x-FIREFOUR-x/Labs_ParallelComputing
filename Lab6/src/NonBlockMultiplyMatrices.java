@@ -42,13 +42,13 @@ public class NonBlockMultiplyMatrices {
                 }
 
                 Matrix subMatrix1 = matrix1.getSubMatrix(indexStartRow, indexEndRow, countColumn);
-                byte[] subMatrix1Buff = subMatrix1.convertToByteArray();
-                byte[] matrix2Buff = matrix2.convertToByteArray();
+                int[] subMatrix1Buff = subMatrix1.convertToArray();
+                int[] matrix2Buff = matrix2.convertToArray();
 
                 MPI.COMM_WORLD.Isend(new int[]{indexStartRow}, 0, 1, MPI.INT, i, TAG_MASTER);
                 MPI.COMM_WORLD.Isend(new int[]{indexEndRow}, 0, 1, MPI.INT, i, TAG_MASTER);
-                MPI.COMM_WORLD.Isend(subMatrix1Buff, 0, subMatrix1Buff.length , MPI.BYTE, i, TAG_MASTER);
-                MPI.COMM_WORLD.Isend(matrix2Buff, 0, matrix2Buff.length, MPI.BYTE, i, TAG_MASTER);
+                MPI.COMM_WORLD.Isend(subMatrix1Buff, 0, subMatrix1Buff.length , MPI.INT, i, TAG_MASTER);
+                MPI.COMM_WORLD.Isend(matrix2Buff, 0, matrix2Buff.length, MPI.INT, i, TAG_MASTER);
             }
 
 
@@ -61,15 +61,17 @@ public class NonBlockMultiplyMatrices {
                 recIndexStart.Wait();
                 recIndexEnd.Wait();
 
-                int countElemsResultBuffer = (indexEndRow[0] - indexStartRow[0] + 1) * countColumn * Integer.BYTES;
-                byte[] resultMatrixBuff = new byte[countElemsResultBuffer];
+                int countElemsResultBuffer = (indexEndRow[0] - indexStartRow[0] + 1) * countColumn;
+                int[] resultMatrixBuff = new int[countElemsResultBuffer];
 
-                var recRes = MPI.COMM_WORLD.Irecv(resultMatrixBuff,0, countElemsResultBuffer , MPI.BYTE, i, TAG_WORKER);
+                var recRes = MPI.COMM_WORLD.Irecv(resultMatrixBuff,0, countElemsResultBuffer , MPI.INT, i, TAG_WORKER);
                 recRes.Wait();
 
                 Matrix subMatrix = new Matrix(resultMatrixBuff, indexEndRow[0] - indexStartRow[0] + 1, countColumn);
                 resultMatrix.putSubMatrix(subMatrix, indexStartRow[0], indexEndRow[0], countColumn);
             }
+            //Matrix matrix = matrix1.multiply(matrix2);
+            //System.out.println(matrix.Equal(resultMatrix));
             //resultMatrix.print();
             var endTime = System.currentTimeMillis();
             System.out.println(endTime - startTime);
@@ -82,12 +84,12 @@ public class NonBlockMultiplyMatrices {
             recIndexStart.Wait();
             recIndexEnd.Wait();
 
-            int sizeSubMatrix1Buff = (indexEndRow[0] - indexStartRow[0] + 1) * countColumn * Integer.BYTES;
-            int sizeMatrix2Buff = countRows * countColumn * Integer.BYTES;
-            byte[] subMatrix1Buff = new byte[sizeSubMatrix1Buff];
-            byte[] matrix2Buff = new byte[sizeMatrix2Buff];
-            var recSubMatrix1 = MPI.COMM_WORLD.Irecv(subMatrix1Buff,0, sizeSubMatrix1Buff, MPI.BYTE,0, TAG_MASTER);
-            var recMatrix2 = MPI.COMM_WORLD.Irecv(matrix2Buff,0,sizeMatrix2Buff, MPI.BYTE,0, TAG_MASTER);
+            int sizeSubMatrix1Buff = (indexEndRow[0] - indexStartRow[0] + 1) * countColumn;
+            int sizeMatrix2Buff = countRows * countColumn;
+            int[] subMatrix1Buff = new int[sizeSubMatrix1Buff];
+            int[] matrix2Buff = new int[sizeMatrix2Buff];
+            var recSubMatrix1 = MPI.COMM_WORLD.Irecv(subMatrix1Buff,0, sizeSubMatrix1Buff, MPI.INT,0, TAG_MASTER);
+            var recMatrix2 = MPI.COMM_WORLD.Irecv(matrix2Buff,0,sizeMatrix2Buff, MPI.INT,0, TAG_MASTER);
             recSubMatrix1.Wait();
             recMatrix2.Wait();
 
@@ -95,11 +97,11 @@ public class NonBlockMultiplyMatrices {
             Matrix Matrx2 = new Matrix(matrix2Buff, countRows, countColumn);
             Matrix resultMatrx = subMatrix1.multiply(Matrx2);
 
-            byte[] resultMatrixBuff = resultMatrx.convertToByteArray();
+            int[] resultMatrixBuff = resultMatrx.convertToArray();
 
             MPI.COMM_WORLD.Isend(indexStartRow,0, 1, MPI.INT, 0, TAG_WORKER);
             MPI.COMM_WORLD.Isend(indexEndRow,0, 1, MPI.INT, 0, TAG_WORKER);
-            MPI.COMM_WORLD.Isend(resultMatrixBuff,0, resultMatrixBuff.length, MPI.BYTE, 0, TAG_WORKER);
+            MPI.COMM_WORLD.Isend(resultMatrixBuff,0, resultMatrixBuff.length, MPI.INT, 0, TAG_WORKER);
         }
 
         MPI.Finalize();

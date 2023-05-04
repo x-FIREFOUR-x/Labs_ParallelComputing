@@ -126,28 +126,29 @@ public class Matrix {
         }
     }
 
-    public byte[] convertToByteArray()
+    public int[] convertToArray()
     {
-        ByteBuffer buffer = ByteBuffer.allocate(countRows * countColumns * Integer.BYTES);
-        buffer.order(ByteOrder.nativeOrder());
+        int [] array = new int[countRows * countColumns];
+        int index = 0;
         for (int i = 0; i < countRows; i++) {
             for (int j = 0; j < countColumns; j++) {
-                buffer.putInt(data[i][j]);
+                array[index] = data[i][j];
+                index++;
             }
         }
-        return buffer.array();
+        return array;
     }
 
-    public Matrix(byte[] bytes, int countRows, int countColumns){
+    public Matrix(int[] array, int countRows, int countColumns){
         this.countRows = countRows;
         this.countColumns = countColumns;
         data = new int[countRows][countColumns];
 
-        ByteBuffer buffer = ByteBuffer.wrap(bytes);
-        buffer.order(ByteOrder.nativeOrder());
+        int index = 0;
         for (int i = 0; i < countRows; i++) {
             for (int j = 0; j < countColumns; j++) {
-                data[i][j] = buffer.getInt();
+                data[i][j] = array[index];
+                index++;
             }
         }
     }

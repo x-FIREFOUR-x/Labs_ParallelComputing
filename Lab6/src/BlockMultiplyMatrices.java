@@ -42,13 +42,13 @@ public class BlockMultiplyMatrices {
                 }
 
                 Matrix subMatrix1 = matrix1.getSubMatrix(indexStartRow, indexEndRow, countColumn);
-                byte[] subMatrix1Buff = subMatrix1.convertToByteArray();
-                byte[] matrix2Buff = matrix2.convertToByteArray();
+                int[] subMatrix1Buff = subMatrix1.convertToArray();
+                int[] matrix2Buff = matrix2.convertToArray();
 
                 MPI.COMM_WORLD.Send(new int[]{indexStartRow},0, 1, MPI.INT, i, TAG_MASTER);
                 MPI.COMM_WORLD.Send(new int[]{indexEndRow},0, 1, MPI.INT, i, TAG_MASTER);
-                MPI.COMM_WORLD.Send(subMatrix1Buff,0, subMatrix1Buff.length , MPI.BYTE, i, TAG_MASTER);
-                MPI.COMM_WORLD.Send(matrix2Buff,0, matrix2Buff.length, MPI.BYTE, i, TAG_MASTER);
+                MPI.COMM_WORLD.Send(subMatrix1Buff,0, subMatrix1Buff.length , MPI.INT, i, TAG_MASTER);
+                MPI.COMM_WORLD.Send(matrix2Buff,0, matrix2Buff.length, MPI.INT, i, TAG_MASTER);
             }
 
 
@@ -59,13 +59,15 @@ public class BlockMultiplyMatrices {
                 MPI.COMM_WORLD.Recv(indexEndRow,0,1, MPI.INT, i, TAG_WORKER);
 
                 int countElemsResultBuffer = (indexEndRow[0]-indexStartRow[0] + 1) * countColumn * Integer.BYTES;
-                byte[] resultMatrixBuff = new byte[countElemsResultBuffer];
+                int[] resultMatrixBuff = new int[countElemsResultBuffer];
                 MPI.COMM_WORLD.Recv(resultMatrixBuff,0,
-                        countElemsResultBuffer , MPI.BYTE, i, TAG_WORKER);
+                        countElemsResultBuffer , MPI.INT, i, TAG_WORKER);
                 Matrix subMatrix = new Matrix(resultMatrixBuff, indexEndRow[0] - indexStartRow[0] + 1, countColumn);
 
                 resultMatrix.putSubMatrix(subMatrix, indexStartRow[0], indexEndRow[0], countColumn);
             }
+            //Matrix matrix = matrix1.multiply(matrix2);
+            //System.out.println(matrix.Equal(resultMatrix));
             //resultMatrix.print();
             var endTime = System.currentTimeMillis();
             System.out.println(endTime - startTime);
@@ -78,20 +80,20 @@ public class BlockMultiplyMatrices {
 
             int sizeSubMatrix1Buff = (indexEndRow[0] - indexStartRow[0] + 1) * countColumn * Integer.BYTES;
             int sizeMatrix2Buff = countRows * countColumn * Integer.BYTES;
-            byte[] subMatrix1Buff = new byte[sizeSubMatrix1Buff];
-            byte[] matrix2Buff = new byte[sizeMatrix2Buff];
-            MPI.COMM_WORLD.Recv(subMatrix1Buff,0, sizeSubMatrix1Buff, MPI.BYTE,0, TAG_MASTER);
-            MPI.COMM_WORLD.Recv(matrix2Buff,0,sizeMatrix2Buff, MPI.BYTE,0, TAG_MASTER);
+            int[] subMatrix1Buff = new int[sizeSubMatrix1Buff];
+            int[] matrix2Buff = new int[sizeMatrix2Buff];
+            MPI.COMM_WORLD.Recv(subMatrix1Buff,0, sizeSubMatrix1Buff, MPI.INT,0, TAG_MASTER);
+            MPI.COMM_WORLD.Recv(matrix2Buff,0,sizeMatrix2Buff, MPI.INT,0, TAG_MASTER);
 
             Matrix subMatrix1 = new Matrix(subMatrix1Buff, indexEndRow[0] - indexStartRow[0] + 1, countColumn);
             Matrix Matrx2 = new Matrix(matrix2Buff, countRows, countColumn);
             Matrix resultMatrx = subMatrix1.multiply(Matrx2);
 
-            byte[] resultMatrixBuff = resultMatrx.convertToByteArray();
+            int[] resultMatrixBuff = resultMatrx.convertToArray();
 
             MPI.COMM_WORLD.Send(indexStartRow,0, 1, MPI.INT, 0, TAG_WORKER);
             MPI.COMM_WORLD.Send(indexEndRow,0, 1, MPI.INT, 0, TAG_WORKER);
-            MPI.COMM_WORLD.Send(resultMatrixBuff,0, resultMatrixBuff.length, MPI.BYTE, 0, TAG_WORKER);
+            MPI.COMM_WORLD.Send(resultMatrixBuff,0, resultMatrixBuff.length, MPI.INT, 0, TAG_WORKER);
         }
 
         MPI.Finalize();
