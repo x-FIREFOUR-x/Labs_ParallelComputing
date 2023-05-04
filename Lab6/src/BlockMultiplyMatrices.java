@@ -13,7 +13,8 @@ public class BlockMultiplyMatrices {
         Matrix matrix1 = new Matrix(countRows, countColumn, 0, 10);
         Matrix matrix2 = new Matrix(countRows, countColumn, 0, 10);
         Matrix resultMatrix = new Matrix(countRows, countColumn);
-        double startTime, endTime;
+
+        var startTime = System.currentTimeMillis();
 
         MPI.Init(args);
 
@@ -30,7 +31,6 @@ public class BlockMultiplyMatrices {
         }
 
         if(taskID == masterID){
-            startTime = MPI.Wtime();
             int rowsForOneWorker = countRows / countWorkers;
             int extraRows = countRows % countWorkers;
 
@@ -66,9 +66,9 @@ public class BlockMultiplyMatrices {
 
                 resultMatrix.putSubMatrix(subMatrix, indexStartRow[0], indexEndRow[0], countColumn);
             }
-            endTime = MPI.Wtime();
             //resultMatrix.print();
-            System.out.println(endTime-startTime + " seconds");
+            var endTime = System.currentTimeMillis();
+            System.out.println(endTime - startTime);
         }
         else {
             int[] indexStartRow = new int[1];
