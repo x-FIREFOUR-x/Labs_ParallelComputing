@@ -89,6 +89,7 @@ public class Matrix {
             }
             buf.append("\n");
         }
+        buf.append("\n");
         System.out.println(buf);
     }
 
