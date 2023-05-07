@@ -3,8 +3,8 @@ import mpi.*;
 import java.util.Arrays;
 
 public class Main {
-    private static final int countRows = 4;
-    private static final int countColumn = 4;
+    private static final int countRows = 2500;
+    private static final int countColumn = 2500;
 
     private static final int ROOT_PROCESS = 0;
     public static void main(String[] args) {
@@ -52,10 +52,10 @@ public class Main {
         Matrix partResultMatrix = subMatrix1.multiply(matrx2);
 
         int[] arrayPartResultMatrix = partResultMatrix.convertToArray();
-        //MPI.COMM_WORLD.Allgatherv(arrayPartResultMatrix,0, arrayPartResultMatrix.length, MPI.INT,
-        //        arrayResult,0, countsElementsInProcesses, displs, MPI.INT);
-        MPI.COMM_WORLD.Gatherv(arrayPartResultMatrix,0, arrayPartResultMatrix.length, MPI.INT,
-                arrayResult,0, countsElementsInProcesses, displs, MPI.INT, ROOT_PROCESS);
+        MPI.COMM_WORLD.Allgatherv(arrayPartResultMatrix,0, arrayPartResultMatrix.length, MPI.INT,
+                arrayResult,0, countsElementsInProcesses, displs, MPI.INT);
+        //MPI.COMM_WORLD.Gatherv(arrayPartResultMatrix,0, arrayPartResultMatrix.length, MPI.INT,
+        //        arrayResult,0, countsElementsInProcesses, displs, MPI.INT, ROOT_PROCESS);
 
         if(processID == ROOT_PROCESS){
             Matrix resultMatrix = new Matrix(arrayResult, countRows, countColumn);
