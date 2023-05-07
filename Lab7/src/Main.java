@@ -57,13 +57,13 @@ public class Main {
         MPI.COMM_WORLD.Gatherv(arrayPartResultMatrix,0, arrayPartResultMatrix.length, MPI.INT,
                 arrayResult,0, countsElementsInProcesses, displs, MPI.INT, ROOT_PROCESS);
 
-        if(processID == 0){
+        if(processID == ROOT_PROCESS){
             Matrix resultMatrix = new Matrix(arrayResult, countRows, countColumn);
             var endTime = System.currentTimeMillis();
             System.out.println("time " + (endTime-startTime));
 
-            Matrix res = matrix1.multiply(matrix2);
-            System.out.println(res.Equal(resultMatrix));
+            //Matrix res = matrix1.multiply(matrix2);
+            //System.out.println(res.Equal(resultMatrix));
         }
 
         MPI.Finalize();
