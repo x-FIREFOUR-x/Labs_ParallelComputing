@@ -16,6 +16,11 @@ public class QueueModel {
 
     private int countServed = 0;
 
+    public int getSize()
+    {
+        return currentSize;
+    }
+
     public int getCountRejected(){
         return countRejected;
     }

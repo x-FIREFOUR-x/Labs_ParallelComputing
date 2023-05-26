@@ -7,7 +7,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 public class RunModel implements Runnable {
 
     private int indexModel;
-    private final boolean activeLogger;
+    private final boolean activePrintLogger;
 
     private QueueModel queue;
     private long startTime;
@@ -17,10 +17,10 @@ public class RunModel implements Runnable {
     private int countConsumers;
 
     public RunModel(int indexModel, QueueModel queue, long startTime,
-                    long workingTime, int countProducers , int countConsumers, boolean activeLogger)
+                    long workingTime, int countProducers , int countConsumers, boolean activePrintLogger)
     {
         this.indexModel = indexModel;
-        this.activeLogger = activeLogger;
+        this.activePrintLogger = activePrintLogger;
         this.queue = queue;
         this.startTime = startTime;
         this.workingTime = workingTime;
@@ -44,26 +44,23 @@ public class RunModel implements Runnable {
                     Executors.callable(new ConsumerTasks(queue, startTime, workingTime), null));
         }
 
-        LoggerModel loggerModel = new LoggerModel(queue, startTime, workingTime);
+        LoggerModel loggerModel = new LoggerModel(queue, startTime, workingTime, activePrintLogger);
 
         try{
-            if(activeLogger){
-                loggerModel.start();
-            }
+            loggerModel.start();
 
             executor.invokeAll(callables);
 
-            if(activeLogger){
-                loggerModel.join();
-            }
+            loggerModel.join();
 
             int countRejected = queue.getCountRejected();
             int countRequest = queue.getCountRequested();
             double chanceOfRejected =(double)countRejected / countRequest;
             System.out.println("Model: " + indexModel + "\n"
-                    + "Chance rejection:" + chanceOfRejected + "\n"
-                    + "Rejected:" + countRejected + "\n"
-                    + "Requested:" + countRequest + "\n"
+                    + "Chance rejection: " + chanceOfRejected + "\n"
+                    + "Average size queue: " + loggerModel.getAverageSizeQueue() + "\n"
+                    + "Rejected: " + countRejected + "\n"
+                    + "Requested: " + countRequest + "\n"
             );
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
