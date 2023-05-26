@@ -4,7 +4,7 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
 
-public class RunModel implements Runnable {
+public class RunModel implements Callable<List<Double>> {
 
     private int indexModel;
     private final boolean activePrintLogger;
@@ -30,7 +30,7 @@ public class RunModel implements Runnable {
     }
 
     @Override
-    public void run() {
+    public List<Double> call() {
         ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(8);
         List<Callable<Void>> callables = new ArrayList<>();
 
@@ -52,19 +52,26 @@ public class RunModel implements Runnable {
             executor.invokeAll(callables);
 
             loggerModel.join();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
 
             int countRejected = queue.getCountRejected();
             int countRequest = queue.getCountRequested();
             double chanceOfRejected =(double)countRejected / countRequest;
+            double averageSize = loggerModel.getAverageSizeQueue();
             System.out.println("Model: " + indexModel + "\n"
                     + "Chance rejection: " + chanceOfRejected + "\n"
-                    + "Average size queue: " + loggerModel.getAverageSizeQueue() + "\n"
+                    + "Average size queue: " + averageSize + "\n"
                     + "Rejected: " + countRejected + "\n"
-                    + "Requested: " + countRequest + "\n"
-            );
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+                    + "Requested: " + countRequest + "\n");
+
         executor.shutdown();
+
+        List<Double> result = new ArrayList<Double>();
+        result.add(chanceOfRejected);
+        result.add(averageSize);
+
+        return result;
     }
 }
