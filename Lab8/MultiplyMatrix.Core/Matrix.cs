@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Lab8.MultiplyMatrix.Core
+namespace MultiplyMatrix.Core
 {
     public class Matrix : ICloneable
     {

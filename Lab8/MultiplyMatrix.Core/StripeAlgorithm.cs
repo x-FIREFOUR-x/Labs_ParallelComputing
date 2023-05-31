@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
 
-namespace Lab8.MultiplyMatrix.Core
+namespace MultiplyMatrix.Core
 {
-    public class StripeAlgorithm
+    public class StripeAlgorithm : IMultiplyMatrixAlgorithm
     {
         private int? _countThreads;
 

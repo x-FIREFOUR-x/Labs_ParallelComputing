@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.33529.622
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab8", "Lab8\Lab8.csproj", "{F3E622FC-ABC7-4F0C-B0D1-43FDC8AF845A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiplyMatrix.Core", "MultiplyMatrix.Core\MultiplyMatrix.Core.csproj", "{DC234FB6-10BE-48B1-A0DF-55BF9659FB56}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiplyMatrix.WebAPI", "MultiplyMatrix.WebAPI\MultiplyMatrix.WebAPI.csproj", "{E27C149C-F3E2-49B4-A7D2-EDEFBE4C7DCC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F3E622FC-ABC7-4F0C-B0D1-43FDC8AF845A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F3E622FC-ABC7-4F0C-B0D1-43FDC8AF845A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F3E622FC-ABC7-4F0C-B0D1-43FDC8AF845A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F3E622FC-ABC7-4F0C-B0D1-43FDC8AF845A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC234FB6-10BE-48B1-A0DF-55BF9659FB56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC234FB6-10BE-48B1-A0DF-55BF9659FB56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC234FB6-10BE-48B1-A0DF-55BF9659FB56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC234FB6-10BE-48B1-A0DF-55BF9659FB56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E27C149C-F3E2-49B4-A7D2-EDEFBE4C7DCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E27C149C-F3E2-49B4-A7D2-EDEFBE4C7DCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E27C149C-F3E2-49B4-A7D2-EDEFBE4C7DCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E27C149C-F3E2-49B4-A7D2-EDEFBE4C7DCC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
