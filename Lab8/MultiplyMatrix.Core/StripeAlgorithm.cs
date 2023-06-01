@@ -4,12 +4,7 @@ namespace MultiplyMatrix.Core
 {
     public class StripeAlgorithm : IMultiplyMatrixAlgorithm
     {
-        private int? _countThreads;
-
-        public StripeAlgorithm(int countThreads)
-        {
-            _countThreads = countThreads;
-        }
+        private int _countThreads = 4;
 
         public Matrix Multiply(Matrix matrix1, Matrix matrix2)
         {
@@ -17,7 +12,7 @@ namespace MultiplyMatrix.Core
             Matrix transposedMatrix2 = (Matrix) matrix2.Clone();
             transposedMatrix2.Transpose();
 
-            var parallelOptions = new ParallelOptions { MaxDegreeOfParallelism = _countThreads ?? 8 };
+            var parallelOptions = new ParallelOptions { MaxDegreeOfParallelism = _countThreads};
 
             int sizeMatrix = matrix1.CountRows;
 

@@ -117,5 +117,17 @@ namespace MultiplyMatrix.Core
             }
             return result;
         }
+
+        public void Print()
+        {
+            for (int i = 0; i < CountRows; i++)
+            {
+                for (int j = 0; j < CountColumns; j++)
+                {
+                    Console.Write(data[i][j] + " ");
+                }
+                Console.WriteLine();
+            }
+        }
     }
 }
