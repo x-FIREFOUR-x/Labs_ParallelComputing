@@ -1,9 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.IO;
 using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text.Json;
 using System.Threading.Tasks;
 
 using MultiplyMatrix.Core;
