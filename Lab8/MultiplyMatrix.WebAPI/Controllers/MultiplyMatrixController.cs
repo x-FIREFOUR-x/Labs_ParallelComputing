@@ -22,10 +22,10 @@ namespace MultiplyMatrix.WebAPI
         }
 
         [HttpPost("multiply-generated-matrix/{matrixSize:int}")]
-        public async Task<int[][]> MultiplyGeneratedMatrices(int matrixSize)
+        public async Task<int[][]> MultiplyGeneratedMatrix(int matrixSize)
         {
-            Matrix matrix1 = new Matrix(matrixSize, matrixSize, 0, 100);
-            Matrix matrix2 = new Matrix(matrixSize, matrixSize, 0, 100);
+            Matrix matrix1 = new Matrix(matrixSize, matrixSize, 1, 1);
+            Matrix matrix2 = new Matrix(matrixSize, matrixSize, 1, 1);
 
             Matrix resultMatrix = _multiplyMatrix.Multiply(matrix1, matrix2);
 
@@ -34,25 +34,14 @@ namespace MultiplyMatrix.WebAPI
 
         [HttpPost("multiply-get-matrix/")]
         [RequestSizeLimit(100_000_000)]
-        public async Task<int[][]> MultiplyGetMatrices(IFormFileCollection files)
+        public async Task<int[][]> MultiplyGetMatrix([FromBody] MatrixData data)
         {
-            Matrix matrix1 = DeserializeMatrixFromFile(files[0]);
-            Matrix matrix2 = DeserializeMatrixFromFile(files[1]);
+            Matrix matrix1 = new Matrix(data.Matrix1);
+            Matrix matrix2 = new Matrix(data.Matrix1);
 
             Matrix resultMatrix = _multiplyMatrix.Multiply(matrix1, matrix2);
 
             return resultMatrix.GetMatrix();
-        }
-
-        public static Matrix DeserializeMatrixFromFile(IFormFile file)
-        {
-            using var stream = new MemoryStream();
-            file.CopyTo(stream);
-
-            var utf8Reader = new Utf8JsonReader(stream.ToArray());
-            int[][] matrix = JsonSerializer.Deserialize<int[][]>(ref utf8Reader)!;
-
-            return new Matrix(matrix);
         }
     }
 }
