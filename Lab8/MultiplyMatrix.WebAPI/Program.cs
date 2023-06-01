@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Lab8
+namespace MultiplyMatrix.WebAPI
 {
     public class Program
     {

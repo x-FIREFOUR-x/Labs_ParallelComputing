@@ -12,7 +12,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Lab8
+using MultiplyMatrix.Core;
+
+namespace MultiplyMatrix.WebAPI
 {
     public class Startup
     {
@@ -26,11 +28,11 @@ namespace Lab8
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddScoped<IMultiplyMatrixAlgorithm, StripeAlgorithm>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Lab8", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "MultiplyMatrix.WebAPI", Version = "v1" });
             });
         }
 
@@ -41,7 +43,7 @@ namespace Lab8
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Lab8 v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "MultiplyMatrix.WebAPI v1"));
             }
 
             app.UseHttpsRedirection();

@@ -31,6 +31,13 @@ namespace MultiplyMatrix.Core
             }
         }
 
+        public Matrix(int[][] matrix)
+        {
+            CountRows = matrix.Length;
+            CountColumns = matrix[0].Length;
+            data = matrix;
+        }
+
         public int GetElement(int idxRow, int idxColumn)
         {
             return data[idxRow][idxColumn];
@@ -49,6 +56,10 @@ namespace MultiplyMatrix.Core
             data[index] = row;
         }
 
+        public int[][] GetMatrix()
+        {
+            return data;
+        }
 
         public bool Equal(Matrix matrix)
         {
