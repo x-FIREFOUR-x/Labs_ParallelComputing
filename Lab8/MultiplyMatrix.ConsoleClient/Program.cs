@@ -8,19 +8,28 @@ namespace MultiplyMatrix.ConsoleClient
 {
     class Program
     {
+        private static int _countTest = 5;
+        private static int _sizeMatrix = 5;
         static async Task Main(string[] args)
         {
             Stopwatch sw = new Stopwatch();
-            sw.Start();
+            TimeSpan totalTime = new TimeSpan();
+            for (int i = 0; i < _countTest; i++)
+            {
+                sw.Start();
 
-            //var resultMatrix = await RequestSender.SendRequestWithSize(5);
-            var resultMatrix = await RequestSender.SendRequestWithMatrix(5);
+                //var resultMatrix = await RequestSender.SendRequestWithSize(_sizeMatrix);
+                var resultMatrix = await RequestSender.SendRequestWithMatrix(_sizeMatrix);
 
-            sw.Stop();
-            Console.WriteLine("Elapsed={0}", sw.Elapsed);
+                sw.Stop();
+                Console.WriteLine("  time: {0}", sw.Elapsed);
+                totalTime += sw.Elapsed;
+                
 
-            Matrix matrix = new Matrix(resultMatrix);
-            matrix.Print();
+                //Matrix matrix = new Matrix(resultMatrix);
+                //matrix.Print();
+            }
+            Console.WriteLine("Average time: {0}", totalTime / _countTest);
         }
     }
 }
